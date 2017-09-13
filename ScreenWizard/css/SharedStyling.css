@@ -1,0 +1,12 @@
+﻿body {
+}
+
+.title-bar {
+    border-bottom: 1px solid gray;
+}
+
+.jumbotron {
+    margin-bottom: 0;
+    background-color: steelblue;
+}
+
