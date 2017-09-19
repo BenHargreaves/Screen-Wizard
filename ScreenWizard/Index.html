@@ -1,26 +1,41 @@
 ﻿<!DOCTYPE html>
 <html ng-app="ScreenWizard">
 <head>
-    <base href="/main" />
+
+    <base href="/" />
     <meta charset="utf-8" />
     <link rel="stylesheet" href="Content/bootstrap.min.css" />
     <link rel="stylesheet" href="css/SharedStyling.css" />
     <script src="Scripts/Shared/angular.min.js"></script>
     <script src="Scripts/Shared/angular-route.min.js"></script>
+    <script src="Scripts/Shared/angular-messages.min.js"></script>
     <script src="Scripts/Shared/jquery-3.1.1.min.js"></script>
     <script src="Scripts/Shared/bootstrap.min.js"></script>
     <script src="Scripts/App/app.js"></script>
+    <script src="Scripts/App/Services/CollectionService.js"></script>
+    <script src="Scripts/App/Services/FieldService.js"></script>
+    <script src="Scripts/App/Controllers/TitleCtrl.js"></script>
+    <script src="Scripts/App/Controllers/mainCtrl.js"></script>
+    <script src="Scripts/App/Controllers/TableSelectCtrl.js"></script>
+    <script src="Scripts/App/Controllers/FieldSelectCtrl.js"></script>
+    <script src="Scripts/App/Controllers/editScreenCtrl.js"></script>
+    <script src="Scripts/App/Controllers/ExistingScreenCtrl.js"></script>
+    <script src="Scripts/App/Controllers/GeneratedEditScreenCtrl.js"></script>
 
 
-    <title>Hello World!</title>
+
+
+
+
+    <title>Screen Wizard</title>
 
 </head>
-<body>
+<body ng-controller="TitleCtrl">
     <div>
 
         <div class="title-bar">
             <div class="jumbotron text-center ">
-                <h1>Screen Wizard</h1>
+                <h1> {{title}} Screen Wizard</h1>
 
             </div>
         </div>

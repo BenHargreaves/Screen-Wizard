@@ -13,6 +13,7 @@ namespace BackEnd.Models
         public static string CollectionName = "Customer";
 
         [BsonId]
+        //[BsonRepresentation(BsonType.ObjectId)]
         public ObjectId CustomerId { get; set; }
 
         [BsonRequired]
@@ -22,7 +23,7 @@ namespace BackEnd.Models
         public DateTimeOffset DateCreated { get; set; } = DateTimeOffset.Now;
         public string Website { get; set; }
         public string Notes { get; set; }
-
+        
 
     }
 }

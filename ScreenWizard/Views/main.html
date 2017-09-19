@@ -8,14 +8,21 @@
             <div class="card-block">
                 <h3 class="card-title">List Screen</h3>
                 <p class="card-text">Create a new List screen for displaying a list of records in your table.</p>
-                <a href="/list" class="btn btn-primary">Create a New List Screen</a>
+                <button class="btn btn-primary" ng-click="setScreenType('List')">Create a New List Screen</button>
             </div>
         </div>
         <div class="card">
             <div class="card-block">
                 <h3 class="card-title">Edit Screen</h3>
                 <p class="card-text">Create a new Edit screen. Used for entering new records into a table, or editing existing ones.</p>
-                <a href="/edit" class="btn btn-primary">Create a New Edit Screen</a>
+                <button class="btn btn-primary" ng-click="setScreenType('Edit')">Create a New Edit Screen</button>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-block">
+                <h3 class="card-title">Existing Screens</h3>
+                <p class="card-text">See Existing Screens. Used for entering data into tables by utilizing your pre-existing screens</p>
+                <a href="/ExistingScreens" class="btn btn-primary">Go to Existing Screens List</a>
             </div>
         </div>
     </div>

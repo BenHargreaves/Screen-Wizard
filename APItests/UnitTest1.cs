@@ -12,12 +12,12 @@ namespace APItests
     [TestClass]
     public class CustomerTests
     {
-        //[TestCleanup]
-        //public void TearDown()
-        //{
-        //    var client = new MongoClient("mongodb://localhost:27017");
-        //    client.DropDatabase("ScreenWizard");
-        //}
+        [TestInitialize]
+        public void TearDown()
+        {
+            var client = new MongoClient("mongodb://localhost:27017");
+            //client.DropDatabase("ScreenWizard");
+        }
 
         [TestMethod]
         public async Task CreateCustomer()
@@ -58,5 +58,7 @@ namespace APItests
         }
 
 
+    }
+
 }
-}
+

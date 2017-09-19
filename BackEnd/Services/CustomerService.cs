@@ -7,6 +7,7 @@ using BackEnd.Services.Contracts;
 using BackEnd.Models;
 using BackEnd.Providers;
 using MongoDB.Bson;
+using System.Reflection;
 
 namespace BackEnd.Services
 {
@@ -81,6 +82,12 @@ namespace BackEnd.Services
             {
                 throw ex;
             }
+        }
+        public PropertyInfo[] GetFields(Customer customer)
+        {
+            customer = new Customer();
+            var test = All().ConfigureAwait(true);
+            return customer.GetType().GetProperties();
         }
     }
 }

@@ -1,0 +1,56 @@
+﻿<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/main">Home</a></li>
+    <li class="breadcrumb-item"><a href="/TableSelect">Table</a></li>
+    <li class="breadcrumb-item active">{{table}} Fields</li>
+</ol>
+
+<div>
+    <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-5">
+            <h4>{{table}} Fields</h4>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Field Name</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="Field in Fields|orderBy:'Name' track by $index" ng-click="selectFieldForScreen(Field)">
+                        <td>{{Field.Name}}</td>
+                        <td>{{Field.Type}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-sm-5">
+            <h4>Fields on Screen</h4>
+            <table class="table table-hover">
+                <thead>               
+                    <tr>
+                        <th>Field Name</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="SelectedField in SelectedFields track by $index" ng-click="SelectedField.IsRequired||removeFieldFromList(SelectedField)" ng-disabled="SelectedField.IsRequired">
+                        <td>{{SelectedField.Name}}</td>
+                        <td>{{SelectedField.Type}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-sm-1"></div>
+    </div>
+
+        <div class="row">
+            <div class="col-sm-9"></div>
+            <div class="col-sm-2">
+                <button class="btn btn-primary" ng-click="setPreviewFields(SelectedFields)">Preview</button>
+            </div>
+        </div>
+</div>
+
+
+

@@ -1,0 +1,27 @@
+﻿<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/main">Home</a></li>
+    <li class="breadcrumb-item active">Existing Screens</li>
+</ol>
+
+<div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-5">
+        <h4>Edit Screens</h4>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Screen Caption</th>
+                    <th>Table Name</th>
+                    <th>No. Visible Fields</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="screen in screens | filter: ScreenType = 'Edit'" ng-click="selectScreen(screen)">
+                    <td>{{screen.ScreenCaption}}</td>
+                    <td>{{screen.TableName}}</td>
+                    <td>{{screen.Fields.length}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

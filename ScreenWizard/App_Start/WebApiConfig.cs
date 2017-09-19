@@ -17,7 +17,7 @@ namespace ScreenWizard
 
             config.Routes.MapHttpRoute(
                 name: "ScreenWizard",
-                routeTemplate: "api/{controller}/{id}",
+                routeTemplate: "api/{controller}/{action}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
 

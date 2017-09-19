@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using BackEnd.Models;
 using MongoDB.Bson;
+using System.Reflection;
 
 namespace BackEnd.Services.Contracts
 {
@@ -15,5 +16,6 @@ namespace BackEnd.Services.Contracts
         Task<Customer> Create(Customer customer);
         Task<Customer> Update(Customer customer);
         Task<Customer> Find(ObjectId id);
+        PropertyInfo[] GetFields(Customer customer);
     }
 }

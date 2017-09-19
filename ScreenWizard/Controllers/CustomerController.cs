@@ -8,10 +8,12 @@ using BackEnd.Models;
 using BackEnd.Services;
 using BackEnd.Services.Contracts;
 using System.Threading.Tasks;
+using MongoDB.Bson;
+using System.Reflection;
 
-namespace WebApplication1.Controllers
+namespace ScreenWizard.Controllers
 {
-    [RoutePrefix("api/customers")]
+    [RoutePrefix("api/customer")]
     public class CustomerController : ApiController
     {
         private readonly ICustomerService _service;
@@ -19,6 +21,28 @@ namespace WebApplication1.Controllers
         {
             _service = new CustomerService();
         }
+
+
+        [HttpGet]
+        [Route("fields")]
+        public List<FieldMetadata> GetFields()
+        {
+
+            var fieldList = new List<FieldMetadata>();
+
+            var customer = new Customer();
+
+            var properties = _service.GetFields(customer);
+            foreach (var p in properties)
+            {
+                string name = p.Name;
+                var value = p.PropertyType.Name;
+                fieldList.Add(new FieldMetadata { Name = name, Type = value });
+
+            }
+            return fieldList;
+        }
+
         // GET api/<controller>
         [HttpGet]
         [Route("")]
@@ -37,16 +61,35 @@ namespace WebApplication1.Controllers
         }
 
         // GET api/<controller>/5
-        [HttpGet]
-        [Route("{id}")]
-        public string Get(int id)
+        [HttpGet()]
+        [Route("get/{id}", Name = "Customer")]
+        public async Task<IHttpActionResult> Find(string id)
         {
-            return "value";
+            try
+            {
+                var MongoObjectId = ObjectId.Parse(id);
+
+                var result = await _service.Find(MongoObjectId);
+                if (result == null)
+                {
+                    return NotFound();
+                }
+                return Ok(result);
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         // POST api/<controller>
-        public void Post([FromBody]string value)
+        [HttpPut]
+        [Route("create")]
+        public IHttpActionResult Create([FromBody]Customer customer)
         {
+            _service.Create(customer);
+            return Ok(customer);
         }
 
         // PUT api/<controller>/5

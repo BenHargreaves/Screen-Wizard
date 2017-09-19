@@ -1,0 +1,18 @@
+﻿<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/main">Home</a></li>
+    <li class="breadcrumb-item active">Table</li>
+</ol>
+<div class="container">
+    <div class="text-center">
+        <h4 class="mt-0">Select a Table</h4>
+        <div class="btn-group">
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                {{SelectedTable}}
+                <span class="caret"></span>
+            </button>
+            <div class="dropdown-menu"  aria-labelledby="dropdownMenu1">
+                <button class="dropdown-item" ng-repeat="collection in collections" ng-hide="collection == 'FieldMetadata'" ng-click="TableSelected(collection)">{{collection}}</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,6 +1,6 @@
 ﻿(function () {
 
-    var ScreenWizard = angular.module('ScreenWizard', ["ngRoute"]);
+    var ScreenWizard = angular.module('ScreenWizard', ['ngRoute', 'ngMessages']);
     
     ScreenWizard.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider){
         
@@ -8,31 +8,37 @@
 
         $routeProvider
             .when("/", {
-                templateUrl: "Views/main.html",
+                templateUrl: "/Views/main.html",
                 controller: "MainCtrl"
             })
-            .when("/list", {
-                templateUrl: "Views/ListScreen.html",
+            .when("/List", {
+                templateUrl: "/Views/ListScreen.html",
                 controller: "ListCtrl"
 
             })
-            .when("/edit", {
-                templateUrl: "Views/EditScreen.html",
+            .when("/Edit", {
+                templateUrl: "/Views/EditScreen.html",
                 controller: "EditCtrl"
 
             })
+            .when("/ExistingScreens", {
+                templateUrl: "/Views/ExistingScreens.html",
+                controller: "ExistingScreenCtrl"
+            })
+            .when("/TableSelect", {
+                templateUrl: "/Views/TableSelect.html",
+                controller: "TableSelectCtrl"
+            })
+            .when("/FieldSelect", {
+                templateUrl: "/Views/FieldSelect.html",
+                controller: "FieldSelectCtrl"
+            })
+            .when("/GeneratedEditScreen", {
+                templateUrl: "/Views/GeneratedEditScreen.html",
+                controller: "GeneratedEditScreenCtrl"
+            })
+
             .otherwise({redirectTo: "/"})
 
     }]);
-  ScreenWizard.controller("MainCtrl", function(){
-    return true;
-    });
-
-  ScreenWizard.controller("ListCtrl", function(){
-    return true;
-    });
-
-  ScreenWizard.controller("EditCtrl", function(){
-    return true;
-    });
 })();

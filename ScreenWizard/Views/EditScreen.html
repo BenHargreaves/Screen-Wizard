@@ -1,4 +1,38 @@
-﻿<ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="/main">Home</a></li>
-    <li class="breadcrumb-item active">Edit Screen</li>
+﻿
+<ol class="breadcrumb">
+<li class="breadcrumb-item"><a href="/main">Home</a></li>
+<li class="breadcrumb-item"><a href="/TableSelect">Table</a></li>
+<li class="breadcrumb-item"><a href="/FieldSelect">{{table}} Fields</a></li>
+<li class="breadcrumb-item active">{{table}} Edit Screen</li>
 </ol>
+
+<div class="alert alert-info" role="alert">
+    <strong>Preview Mode</strong> This Screen is in Preview Mode - Edit field captions by clicking on them. Buttons and field inputs are disabled in this mode.
+</div>
+
+
+<div>
+    <div class="pt-lg-3 pb-lg-3 text-center" style="margin-bottom: 1rem"><h2><input class="text-center" style="border: 0px" type="text" ng-model="screenCaption" ng-init="screenCaption = 'Edit ' + table" /></h2></div>
+    <div class="form-group row" ng-repeat="previewField in previewFields track by $index">
+        <div class="col-sm-2"></div>
+        <label for="repeated-element" class="col-2 col-form-label"><input style="border: 0px" type="text"  ng-model="previewField.Caption" ng-init="previewField.Caption = previewField.Name"></label>
+        <div class="col-sm-6">
+            <input class="form-control" type="{{previewField.DisplayType}}" id="repeated-element" disabled>
+        </div>
+        <div class="col-sm-2"></div>
+    </div>
+    <div class="row mb-lg-auto">
+        <div class="col-sm-7"></div>
+        <div class="col-sm-5">
+            <button class="btn btn-secondary">Delete</button>
+            <button class="btn btn-secondary">Clear</button>
+            <button class="btn btn-primary">Save</button>
+        </div>
+    </div>
+    <div class="p-5"></div>
+    <div class="fixed-bottom text-center alert-info card-footer">
+        <button class="btn btn-success" ng-click="saveScreen(screenCaption, table, previewFields)">Save Screen</button>
+    </div>
+</div>
+
+

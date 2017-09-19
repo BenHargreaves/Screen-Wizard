@@ -1,4 +1,23 @@
 ﻿<ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="/main">Home</a></li>
+    <li class="breadcrumb-item"><a href="/Main">Home</a></li>
+    <li class="breadcrumb-item"><a href="/TableSelect">Table</a></li>
     <li class="breadcrumb-item active">List Screen</li>
 </ol>
+
+<div class="col-sm-5">
+    <h4>Test Fields from Field Select Screen</h4>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Field Name</th>
+                <th>Type</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="field in fields track by $index">
+                <td>{{field.Name}}</td>
+                <td>{{field.Type}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,7 +1,9 @@
-﻿using BackEnd.Providers.Contracts;
+﻿using BackEnd.Models;
+using BackEnd.Providers.Contracts;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Threading.Tasks;
@@ -37,6 +39,7 @@ namespace BackEnd.Providers
         {
             try
             {
+                //var BsonID = id.ToBson();
                 var collection = GetCollection<T>(collectionName);
                 var filterId = Builders<T>.Filter.Eq("_id", id);
 
@@ -101,6 +104,53 @@ namespace BackEnd.Providers
                     await collection.ReplaceOneAsync(filterId, payload, new UpdateOptions { IsUpsert = true }).ConfigureAwait(false);
 
                 }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public async Task<List<string>> GetCollections()
+        {
+            try
+            {
+                var database = GetDatabase();
+                var bArray = new List<string>();
+                var result = await database.ListCollectionsAsync().ConfigureAwait(false);
+                
+
+                while (await result.MoveNextAsync())
+                {
+                    foreach (var current in result.Current)
+                    {
+                       
+                        bArray.Add(current.GetValue("name").AsString);
+                        
+                    }
+
+                    }
+                    return bArray;
+                    //return await result.ToListAsync().ConfigureAwait(false);
+                    //return result.ToListAsync().ConfigureAwait(false);
+                }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public async Task<IEnumerable<T>> GetFields<T>(string collectionName)
+        {
+            try
+            {
+                var database = GetDatabase();
+                var collection = database.GetCollection<T>("FieldMetadata");
+                var filterId = Builders<T>.Filter.Eq("Table", collectionName);
+                var result = await collection.FindAsync(filterId).ConfigureAwait(false);
+
+                return await result.ToListAsync().ConfigureAwait(false);
+
+
             }
             catch (Exception ex)
             {
