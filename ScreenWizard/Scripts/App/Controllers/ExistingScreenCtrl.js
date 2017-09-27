@@ -11,7 +11,8 @@
 
             $scope.selectScreen = function (screen) {
                 FieldService.setScreen(screen);
-                $location.path("/GeneratedEditScreen")
+                var type = screen.ScreenType;
+                $location.path("/Generated" + type + "Screen")
             };
         });
     

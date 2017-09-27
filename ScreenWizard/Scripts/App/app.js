@@ -13,7 +13,7 @@
             })
             .when("/List", {
                 templateUrl: "/Views/ListScreen.html",
-                controller: "ListCtrl"
+                controller: "ListScreenCtrl"
 
             })
             .when("/Edit", {
@@ -36,6 +36,10 @@
             .when("/GeneratedEditScreen", {
                 templateUrl: "/Views/GeneratedEditScreen.html",
                 controller: "GeneratedEditScreenCtrl"
+            })
+            .when("/GeneratedListScreen", {
+                templateUrl: "/Views/GeneratedListScreen.html",
+                controller: "GeneratedListScreenCtrl"
             })
 
             .otherwise({redirectTo: "/"})
