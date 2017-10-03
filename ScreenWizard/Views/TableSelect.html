@@ -11,7 +11,7 @@
                 <span class="caret"></span>
             </button>
             <div class="dropdown-menu"  aria-labelledby="dropdownMenu1">
-                <button class="dropdown-item" ng-repeat="collection in collections" ng-hide="collection == 'FieldMetadata'" ng-click="TableSelected(collection)">{{collection}}</button>
+                <button class="dropdown-item" ng-repeat="collection in collections" ng-hide="collection == 'FieldMetadata' || collection == 'ScreenMetadata'" ng-click="TableSelected(collection)">{{collection}}</button>
             </div>
         </div>
     </div>

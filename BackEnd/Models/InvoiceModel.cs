@@ -10,7 +10,8 @@ namespace BackEnd.Models
         public static string CollectionName = "Invoice";
 
         [BsonId]
-        public ObjectId InvoiceId { get; set; }
+        public ObjectId _id { get; set; }
+        public string InvoiceId { get; set; }
         [BsonRequired]
         public string CustomerName { get; set; }
         

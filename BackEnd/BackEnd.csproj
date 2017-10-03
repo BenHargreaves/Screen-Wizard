@@ -70,10 +70,12 @@
     <Compile Include="Services\Contracts\ICustomerService.cs" />
     <Compile Include="Services\Contracts\ICollectionService.cs" />
     <Compile Include="Services\Contracts\IFieldService.cs" />
+    <Compile Include="Services\Contracts\IInvoiceService.cs" />
     <Compile Include="Services\Contracts\IScreenService.cs" />
     <Compile Include="Services\ActivityService.cs" />
     <Compile Include="Services\CustomerService.cs" />
     <Compile Include="Services\FieldService.cs" />
+    <Compile Include="Services\InvoiceService.cs" />
     <Compile Include="Services\ScreenService.cs" />
   </ItemGroup>
   <ItemGroup>
