@@ -10,7 +10,7 @@
             getCustomers();        
             
             function getCustomers() {
-                $http.get(urlBase + "customer")
+                $http.get(urlBase + screenData.TableName)
                     .then(function(response){
                         $scope.customers = response.data;
                     });

@@ -1,37 +1,34 @@
-﻿using System;
+﻿using BackEnd.Models;
+using BackEnd.Services;
+using BackEnd.Services.Contracts;
+using MongoDB.Bson;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Web.Http;
-using BackEnd.Models;
-using BackEnd.Services;
-using BackEnd.Services.Contracts;
 using System.Threading.Tasks;
-using MongoDB.Bson;
-using System.Reflection;
+using System.Web.Http;
 
 namespace ScreenWizard.Controllers
 {
-    [RoutePrefix("api/customer")]
-    public class CustomerController : ApiController
+    [RoutePrefix("api/activity")]
+    public class ActivityController : ApiController
     {
-        private readonly ICustomerService _service;
-        public CustomerController()
+        private readonly IActivityService _service;
+        public ActivityController()
         {
-            _service = new CustomerService();
+            _service = new ActivityService();
         }
 
-        // GET api/<controller>
         [HttpGet]
         [Route("")]
         public async Task<IHttpActionResult> GetAll()
         {
-           try
+            try
             {
                 var result = await _service.All();
                 return Ok(result);
-
             }
             catch (Exception ex)
             {
@@ -39,9 +36,8 @@ namespace ScreenWizard.Controllers
             }
         }
 
-        // GET api/<controller>/5
-        [HttpGet()]
-        [Route("get/{id}", Name = "Customer")]
+        [HttpGet]
+        [Route("get/{id}", Name = "Activity")]
         public async Task<IHttpActionResult> Find(string id)
         {
             try
@@ -54,7 +50,6 @@ namespace ScreenWizard.Controllers
                     return NotFound();
                 }
                 return Ok(result);
-
             }
             catch (Exception ex)
             {
@@ -62,23 +57,19 @@ namespace ScreenWizard.Controllers
             }
         }
 
-        // POST api/<controller>
         [HttpPut]
         [Route("create")]
-        public IHttpActionResult Create([FromBody]Customer customer)
+        public IHttpActionResult Create([FromBody] Activity activity)
         {
-            _service.Create(customer);
-            return Ok(customer);
-        }
-
-        // PUT api/<controller>/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/<controller>/5
-        public void Delete(int id)
-        {
+            try
+            {
+                _service.Create(activity);
+                return Ok(activity);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace BackEnd.Models
 {
-    public class InvoiceModel
+    public class Invoice
     {
         public static string CollectionName = "Invoice";
 

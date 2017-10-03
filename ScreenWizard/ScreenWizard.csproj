@@ -23,6 +23,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -134,6 +135,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Content Include="Scripts\App\Controllers\GeneratedListScreenCtrl.js" />
     <Content Include="Scripts\Shared\angular-messages.js" />
     <Content Include="Scripts\Shared\angular-messages.min.js" />
     <Content Include="Scripts\Shared\angular-messages.min.js.map" />
@@ -191,6 +193,7 @@
     <Content Include="Views\FieldSelect.html" />
     <Content Include="Views\EditScreen.html" />
     <Content Include="Views\GeneratedEditScreen.html" />
+    <Content Include="Views\GeneratedListScreen.html" />
     <Content Include="Views\ListScreen.html" />
     <Content Include="Views\main.html" />
     <Content Include="Views\TableSelect.html" />
@@ -201,6 +204,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\ActivityController.cs" />
     <Compile Include="Controllers\CollectionsController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\FieldMetadataController.cs" />

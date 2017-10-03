@@ -9,12 +9,12 @@ using System.Reflection;
 
 namespace BackEnd.Services.Contracts
 {
-    public interface ICustomerService
+    public interface IActivityService
     {
-        Task<IEnumerable<Customer>> All();
+        Task<IEnumerable<Activity>> All();
         Task<bool> Delete(ObjectId id);
-        Task<Customer> Create(Customer customer);
-        Task<Customer> Update(Customer customer);
-        Task<Customer> Find(ObjectId id);
+        Task<Activity> Create(Activity activity);
+        Task<Activity> Update(Activity activity);
+        Task<Activity> Find(ObjectId id);
     }
 }

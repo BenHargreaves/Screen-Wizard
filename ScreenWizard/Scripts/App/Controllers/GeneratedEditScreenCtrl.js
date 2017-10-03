@@ -26,7 +26,7 @@
                 };
                 $http.put(urlBase + $scope.screenData.TableName + "/create", data)
                     .then (function(response){
-                        $window.alert($scope.screenData.TableName + " successfully created! \n\n CustomerID =" +response.data.CustomerId);
+                        $window.alert($scope.screenData.TableName + " successfully created!");
                     });
             };
         });

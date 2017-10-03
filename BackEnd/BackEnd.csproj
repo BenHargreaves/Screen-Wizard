@@ -66,10 +66,12 @@
     <Compile Include="Providers\Contracts\IMongoProvider.cs" />
     <Compile Include="Providers\MongoProvider.cs" />
     <Compile Include="Services\CollectionService.cs" />
+    <Compile Include="Services\Contracts\IActivityService.cs" />
     <Compile Include="Services\Contracts\ICustomerService.cs" />
     <Compile Include="Services\Contracts\ICollectionService.cs" />
     <Compile Include="Services\Contracts\IFieldService.cs" />
     <Compile Include="Services\Contracts\IScreenService.cs" />
+    <Compile Include="Services\ActivityService.cs" />
     <Compile Include="Services\CustomerService.cs" />
     <Compile Include="Services\FieldService.cs" />
     <Compile Include="Services\ScreenService.cs" />

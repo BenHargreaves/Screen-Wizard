@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BackEnd.Models
 {
-    public class ActivityModel
+    public class Activity
     {
         public static string CollectionName = "Activity";
 

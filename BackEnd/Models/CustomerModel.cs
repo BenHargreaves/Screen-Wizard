@@ -14,11 +14,12 @@ namespace BackEnd.Models
 
         [BsonId]
         //[BsonRepresentation(BsonType.ObjectId)]
-        public ObjectId CustomerId { get; set; }
+        public ObjectId _id { get; set; }
 
-        [BsonRequired]
         public string Name { get; set; }
+        public string CustomerId { get; set; }
         public string Email{ get; set; }
+        
         public string ContactNumber { get; set; }
         public DateTimeOffset DateCreated { get; set; } = DateTimeOffset.Now;
         public string Website { get; set; }

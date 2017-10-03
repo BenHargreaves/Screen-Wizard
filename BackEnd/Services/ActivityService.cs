@@ -11,20 +11,20 @@ using System.Reflection;
 
 namespace BackEnd.Services
 {
-    public class CustomerService : ICustomerService
+    public class ActivityService : IActivityService
     {
         private readonly MongoProvider _mongoProvider;
 
-        public CustomerService()
+        public ActivityService()
         {
             _mongoProvider = new MongoProvider("ScreenWizard");
         }
 
-        public async Task<IEnumerable<Customer>> All()
+       public async Task<IEnumerable<Activity>> All()
         {
             try
             {
-                return await _mongoProvider.GetAll<Customer>(Customer.CollectionName).ConfigureAwait(false);
+                return await _mongoProvider.GetAll<Activity>(Activity.CollectionName).ConfigureAwait(false);
             }
             catch (Exception ex)
             {
@@ -32,12 +32,12 @@ namespace BackEnd.Services
             }
         }
 
-        public async Task<Customer> Create(Customer customer)
+        public async Task<Activity> Create(Activity activity)
         {
             try
             {
-                await _mongoProvider.Upsert<Customer>(Customer.CollectionName, customer).ConfigureAwait(false);
-                return customer;
+                await _mongoProvider.Upsert<Activity>(Activity.CollectionName, activity).ConfigureAwait(false);
+                return activity;
             }
             catch (Exception ex)
             {
@@ -49,8 +49,7 @@ namespace BackEnd.Services
         {
             try
             {
-                return await _mongoProvider.Delete<Customer>(Customer.CollectionName, id).ConfigureAwait(false);
-                
+                return await _mongoProvider.Delete<Activity>(Activity.CollectionName, id).ConfigureAwait(false);
             }
             catch (Exception ex)
             {
@@ -58,12 +57,11 @@ namespace BackEnd.Services
             }
         }
 
-        public async Task<Customer> Find(ObjectId id)
+        public async Task<Activity> Find(ObjectId id)
         {
             try
             {
-                return await _mongoProvider.Find<Customer>(Customer.CollectionName, id).ConfigureAwait(false);
-                
+                return await _mongoProvider.Find<Activity>(Activity.CollectionName, id).ConfigureAwait(false);
             }
             catch (Exception ex)
             {
@@ -71,12 +69,12 @@ namespace BackEnd.Services
             }
         }
 
-        public async Task<Customer> Update(Customer customer)
+        public async Task<Activity> Update(Activity activity)
         {
             try
             {
-                await _mongoProvider.Upsert<Customer>(Customer.CollectionName, customer, customer._id).ConfigureAwait(false);
-                return customer;
+                await _mongoProvider.Upsert<Activity>(Activity.CollectionName, activity, activity.ActivityId).ConfigureAwait(false);
+                return activity;
             }
             catch (Exception ex)
             {
