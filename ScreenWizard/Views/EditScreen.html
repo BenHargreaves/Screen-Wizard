@@ -13,14 +13,34 @@
 
 <div>
     <div class="pt-lg-3 pb-lg-3 text-center" style="margin-bottom: 1rem"><h2><input class="text-center" style="border: 0px" type="text" ng-model="screenCaption" ng-init="screenCaption = 'Edit ' + table" /></h2></div>
-    <div class="form-group row" ng-repeat="previewField in previewFields track by $index">
-        <div class="col-sm-2"></div>
-        <label for="repeated-element" class="col-2 col-form-label"><input style="border: 0px" type="text"  ng-model="previewField.Caption" ng-init="previewField.Caption = previewField.Name"></label>
-        <div class="col-sm-6">
-            <input class="form-control" type="{{previewField.DisplayType}}" id="repeated-element" disabled>
+    <div ng-repeat="previewField in previewFields track by $index">
+        <div class="form-group row" ng-if="previewField.Type != 'List'">
+            <div class="col-sm-2"></div>
+            <label for="repeated-element" class="col-2 col-form-label"><input style="border: 0px" type="text" ng-model="previewField.Caption" ng-init="previewField.Caption = previewField.Name"></label>
+            <div class="col-sm-6">
+                <input class="form-control" type="{{previewField.DisplayType}}" id="repeated-element" disabled>
+            </div>
+            <div class="col-sm-2"></div>
         </div>
-        <div class="col-sm-2"></div>
     </div>
+    <div class="p-2"></div>
+    <div ng-repeat="previewField in previewFields track by $index" ng-if="previewField.Type == 'List'">
+        <div class="col-sm-10 offset-1"> 
+            <table class="table table-hover" >
+                <thead>
+                    <tr>
+                        <th class="thead-default alert-info text-center" ng-repeat="fieldHeader in previewField.ItemDetails"><input class="alert-info font-weight-bold" style="border: 0px; width: 100%" type="text" ng-model="fieldHeader"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td ng-repeat="fieldHeader in previewField.ItemDetails">Sample Text</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="p-5"></div>
     <div class="row mb-lg-auto">
         <div class="col-sm-7"></div>
         <div class="col-sm-5">
