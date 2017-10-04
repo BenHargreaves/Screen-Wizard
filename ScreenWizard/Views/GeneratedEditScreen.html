@@ -8,17 +8,37 @@
     <div class="pt-lg-3 pb-lg-3 text-center" style="margin-bottom: 1rem"><h2>{{screenData.ScreenCaption}}</h2></div>
     
     <form novalidate name="screenSubmit" ng-submit="screenSubmit.$valid && submit()">
-        <div class="form-group row" ng-repeat="field in screenData.Fields track by $index">           
-                <div class="col-sm-2"></div>
-                <label for="repeated-element" class="col-2 col-form-label">{{field.Caption}}</label>
-                <div class="col-sm-6">
-                    <input name="{{field.Name +$index}}" ng-model="field.Value" ng-init="formInput[field.Name +$index]" placeholder="" class="form-control" type="{{field.DisplayType}}" id="repeated-element" ng-required="field.IsRequired">
-                    <ng-messages for="screenSubmit[field.Name +$index].$error" role="alert" ng-show="(screenSubmit[field.Name +$index].$dirty || screenSubmit.$submitted) && screenSubmit[field.Name +$index].$error">
-                        <ng-message when="required" class="help-block" style="color:red">This field is required!</ng-message>
-                    </ng-messages>
-                </div>
-                <div class="col-sm-2"></div>           
+        <div ng-repeat="field in screenData.Fields track by $index">
+            <div class="form-group row" ng-if="field.Type != 'List'">           
+                    <div class="col-sm-2"></div>
+                    <label for="repeated-element" class="col-2 col-form-label">{{field.Caption}}</label>
+                    <div class="col-sm-6">
+                        <input name="{{field.Name +$index}}" ng-model="field.Value" ng-init="formInput[field.Name +$index]" placeholder="" class="form-control" type="{{field.DisplayType}}" id="repeated-element" ng-required="field.IsRequired">
+                        <ng-messages for="screenSubmit[field.Name +$index].$error" role="alert" ng-show="(screenSubmit[field.Name +$index].$dirty || screenSubmit.$submitted) && screenSubmit[field.Name +$index].$error">
+                            <ng-message when="required" class="help-block" style="color:red">This field is required!</ng-message>
+                        </ng-messages>
+                    </div>
+                    <div class="col-sm-2"></div>           
+            </div>
         </div>
+        <div class="p-2"></div>
+        <div ng-repeat="field in screenData.Fields track by $index" ng-if="field.Type == 'List'">
+            <div class="col-sm-6 offset-5">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th class="thead-default alert-info text-center" ng-repeat="fieldHeader in field.ItemDetails">{{fieldHeader}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td ng-repeat="fieldHeader in previewField.ItemDetails">Sample Text</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="p-5"></div>
 
 
         <div class="row mb-lg-auto">

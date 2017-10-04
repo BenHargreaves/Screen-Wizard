@@ -20,9 +20,14 @@
             $scope.submit = function () {
                 var data = {};
                 for (var i = 0; i < $scope.screenData.Fields.length; i++) {
-                    var name = $scope.screenData.Fields[i].Name;
-                    var value = $scope.screenData.Fields[i].Value;
-                    data[name] = value;
+                    if ($scope.screenData.Fields[i].Name != 'List') {
+                        var name = $scope.screenData.Fields[i].Name;
+                        var value = $scope.screenData.Fields[i].Value;
+                        data[name] = value;
+                    }
+                    else {
+
+                    }
                 };
                 $http.put(urlBase + $scope.screenData.TableName + "/create", data)
                     .then (function(response){
