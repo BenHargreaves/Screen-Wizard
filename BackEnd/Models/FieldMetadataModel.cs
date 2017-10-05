@@ -25,9 +25,16 @@ namespace BackEnd.Models
         public string Caption { get; set; }
 
         [BsonIgnoreIfNull]
-        public List<string> ItemDetails { get; set; }
+        public List<Items> ItemDetails { get; set; }
         
         public string Value { get; set; }
 
     }
+
+    public class Items
+    {
+        public string Name { get; set; }
+        public string Caption { get; set; }
+    }
+         
 }

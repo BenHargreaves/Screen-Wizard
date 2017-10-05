@@ -25,19 +25,29 @@
     </div>
     <div class="p-2"></div>
     <div ng-repeat="previewField in previewFields track by $index" ng-if="previewField.Type == 'List'">
-        <div class="col-sm-10 offset-1"> 
-            <table class="table table-hover" >
-                <thead>
-                    <tr>
-                        <th class="thead-default alert-info text-center" ng-repeat="fieldHeader in previewField.ItemDetails"><input class="alert-info font-weight-bold" style="border: 0px; width: 100%" type="text" ng-model="fieldHeader"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td ng-repeat="fieldHeader in previewField.ItemDetails">Sample Text</td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="row">
+            <form ng-submit="addRow()" role="form" class="col-sm-5 offset-1">
+                <div class="form-group row" ng-repeat="tempField in previewField.ItemDetails">
+                    <label class="col-md-3 col-form-label">{{tempField.Caption}}</label>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control" disabled />
+                    </div>
+                </div>
+            </form>
+            <div class="col-sm-6">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th class="thead-default alert-info text-center" ng-repeat="fieldHeader in previewField.ItemDetails"><input class="alert-info font-weight-bold" style="border: 0px; width: 100%" type="text" ng-model="fieldHeader.Caption" ng-init="fieldHeader.Caption = fieldHeader.Name"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td ng-repeat="fieldHeader in previewField.ItemDetails">Sample Text</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
     <div class="p-5"></div>

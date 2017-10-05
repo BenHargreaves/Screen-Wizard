@@ -23,19 +23,29 @@
         </div>
         <div class="p-2"></div>
         <div ng-repeat="field in screenData.Fields track by $index" ng-if="field.Type == 'List'">
-            <div class="col-sm-6 offset-5">
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th class="thead-default alert-info text-center" ng-repeat="fieldHeader in field.ItemDetails">{{fieldHeader}}</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td ng-repeat="fieldHeader in previewField.ItemDetails">Sample Text</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="row">
+                <ng-form ng-submit="addRow()" role="form" class="col-sm-4 offset-1">
+                    <div class="form-group row" ng-repeat="addField in field.ItemDetails">
+                        <label class="col-md-4 col-form-label">{{addField.Caption}}</label>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" />
+                        </div>
+                    </div>
+                </ng-form>
+                <div class="col-sm-7">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th class="thead-default alert-info text-center" ng-repeat="fieldHeader in field.ItemDetails">{{fieldHeader.Name}}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td ng-repeat="fieldHeader in previewField.ItemDetails">Sample Text</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
         <div class="p-5"></div>
