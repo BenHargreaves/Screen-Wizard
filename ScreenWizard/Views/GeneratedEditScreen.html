@@ -24,24 +24,26 @@
         <div class="p-2"></div>
         <div ng-repeat="field in screenData.Fields track by $index" ng-if="field.Type == 'List'">
             <div class="row">
-                <ng-form ng-submit="addRow()" role="form" class="col-sm-4 offset-1">
+                <ng-form role="form" class="col-sm-4 offset-1">
+                    <h4 class="pb-sm-3">Add Item</h4>
                     <div class="form-group row" ng-repeat="addField in field.ItemDetails">
                         <label class="col-md-4 col-form-label">{{addField.Caption}}</label>
                         <div class="col-md-6">
-                            <input type="text" class="form-control" />
+                            <input type="text" class="form-control" name="{{addfield.Name}}" ng-model="addField.Value"/>
                         </div>
                     </div>
+                    <button class="btn btn-secondary" type="button"ng-click="addRow()">Add Item to List</button>
                 </ng-form>
-                <div class="col-sm-7">
+                <div class="col-sm-7"> 
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th class="thead-default alert-info text-center" ng-repeat="fieldHeader in field.ItemDetails">{{fieldHeader.Name}}</th>
+                                <th class="thead-default alert-info text-left align-middle" ng-repeat="fieldHeader in field.ItemDetails">{{fieldHeader.Caption}}</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td ng-repeat="fieldHeader in previewField.ItemDetails">Sample Text</td>
+                            <tr ng-repeat="item in Items">
+                                <td ng-repeat="field in field.ItemDetails track by $index">{{item[field.Name]}}</td>
                             </tr>
                         </tbody>
                     </table>

@@ -15,12 +15,12 @@
     <table class="table table-hover">
         <thead>
             <tr>
-                <th class="thead-default alert-info text-center" ng-repeat="fieldHeader in previewFields track by $index"><input class="alert-info font-weight-bold" style="border: 0px; width: 100%" type="text" ng-model="fieldHeader.Caption" ng-init="fieldHeader.Caption = fieldHeader.Name"></th>
+                <th ng-if="fieldHeader.Type != 'List'"class="thead-default alert-info text-center" ng-repeat="fieldHeader in previewFields track by $index"><input class="alert-info font-weight-bold" style="border: 0px; width: 100%" type="text" ng-model="fieldHeader.Caption" ng-init="fieldHeader.Caption = fieldHeader.Name"></th>
             </tr>
         </thead>
         <tbody>
             <tr ng-repeat="customer in customers">
-                <td ng-repeat="field in previewFields">{{customer[field.Name]}}</td>
+                <td ng-if="field.Type != 'List'" ng-repeat="field in previewFields">{{customer[field.Name]}}</td>
             </tr>
         </tbody>
     </table>
