@@ -12,7 +12,6 @@ namespace BackEnd.Models
 
         public string Name { get; set; }
         public decimal Price { get; set; }
-        public string CustomerName { get; set; }
         public int Quantity { get; set; }
         public int Discount { get; set; }
         public decimal Subtotal { get; set; }

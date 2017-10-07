@@ -26,10 +26,10 @@
     <div class="p-2"></div>
     <div ng-repeat="previewField in previewFields track by $index" ng-if="previewField.Type == 'List'">
         <div class="row">
-            <form ng-submit="addRow()" role="form" class="col-sm-5 offset-1">
+            <form ng-submit="addRow()" role="form" class="col-sm-4 offset-1">
                 <div class="form-group row" ng-repeat="tempField in previewField.ItemDetails">
-                    <label class="col-md-3 col-form-label">{{tempField.Caption}}</label>
-                    <div class="col-md-3">
+                    <label class="col-md-4 col-form-label">{{tempField.Caption}}</label>
+                    <div class="col-md-8">
                         <input type="text" class="form-control" disabled />
                     </div>
                 </div>

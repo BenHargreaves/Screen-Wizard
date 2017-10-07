@@ -26,6 +26,11 @@
                         for (var i = 0; i < $scope.screenData.Fields[j].ItemDetails.length; i++) {
                             var name = $scope.screenData.Fields[j].ItemDetails[i].Name;
                             var value = $scope.screenData.Fields[j].ItemDetails[i].Value;
+                            if (name == 'Subtotal') {
+                                var rate = row['Price'] * row['Quantity'];
+                                var discount = rate * (row['Discount'] / 100);
+                                var value = ( rate - discount );
+                            };
                             row[name] = value;
                         };
                         $scope.Items.push(row);
